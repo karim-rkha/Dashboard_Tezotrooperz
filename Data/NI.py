@@ -7,10 +7,6 @@ from datetime import datetime
 from dateutil import parser
 
 
-
-with open("cr7_holders_5th", "rb") as fp:   # Unpickling
-    cr7_5 = pickle.load(fp)
-
 with open("tz_holders", "rb") as fp:   # Unpickling
     holders = pickle.load(fp)
 
@@ -57,5 +53,5 @@ def NI(who):  # Nfts held
     return inv
 
 
-# with open("NI_cr7_5", "wb") as fp:  # Pickling
-#     pickle.dump(NI(cr7_5), fp)
+with open("NI_holders_5", "wb") as fp:  # Pickling
+    pickle.dump(NI(holders), fp)
