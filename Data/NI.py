@@ -10,6 +10,10 @@ from dateutil import parser
 with open("tz_holders", "rb") as fp:   # Unpickling
     holders = pickle.load(fp)
 
+
+with open("WL_bis", "rb") as fp:   # Unpickling
+    WL = pickle.load(fp)
+
 def NI(who):  # Nfts held
     i = 1
     nft = {}
@@ -28,8 +32,13 @@ def NI(who):  # Nfts held
 
     return [nft, inv]
 
-with open("NI_holders", "wb") as fp:  # Pickling
-    pickle.dump(NI(holders), fp)
+with open("NI_WL", "wb") as fp:  # Pickling
+    pickle.dump(NI(WL), fp)
+
+
+
+with open("NI_WL", "wb") as fp:  # Pickling
+    pickle.dump(NI(WL), fp)
 
 
 def NI(who):  # Nfts held
@@ -53,5 +62,5 @@ def NI(who):  # Nfts held
     return inv
 
 
-with open("NI_holders_5", "wb") as fp:  # Pickling
-    pickle.dump(NI(holders), fp)
+with open("NI_WL_5", "wb") as fp:  # Pickling
+    pickle.dump(NI(WL), fp)
