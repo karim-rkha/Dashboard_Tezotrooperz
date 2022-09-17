@@ -11,7 +11,7 @@ import seaborn
 from collections import Counter
 
 
-with open("WL", "rb") as fp:   # Unpickling
+with open("WL_bis", "rb") as fp:   # Unpickling
     WL = pickle.load(fp)
 
 with open("tz_minters", "rb") as fp:   # Unpickling
@@ -20,7 +20,7 @@ with open("tz_minters", "rb") as fp:   # Unpickling
 with open("tz_holders", "rb") as fp:   # Unpickling
     holders = pickle.load(fp)
 
-with open("NI_WL_5", "rb") as fp:   # Unpickling
+with open("NI_WL_5_new", "rb") as fp:   # Unpickling
     NI_WL = pickle.load(fp)
 
 
@@ -34,8 +34,32 @@ for ad in WL:
 
 print(len(WL), "were Whitelisted")
 print("Among them, there were ", count, "minters")
-print("Conversion rate : ", count/len(WL), "%")
+print("Conversion rate : ", round(100*count/len(WL),2), "%")
 ##################################################################################################################################
+
+
+print("")
+
+
+# Conversion rate Ottez 
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Ottez"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
 
 
 # Conversion rate Ottez Oysters
@@ -50,10 +74,14 @@ for ad in NI_WL:
             WL_minters.append(ad)
 
 
-print(len(name_holders),name,"were whitelisted : ", len(name_holders)/len(WL), "of the WL")
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
 print("Among them, there are : ", len(WL_minters), "minters")
-print("Conversion rate : ", 100*len(WL_minters)/len(name_holders), "%")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
 ##################################################################################################################################
+
+
+print("")
+
 
 # Conversion rate PixelPotus
 ##################################################################################################################################
@@ -67,10 +95,14 @@ for ad in NI_WL:
             WL_minters.append(ad)
 
 
-print(len(name_holders),name,"were whitelisted : ", len(name_holders)/len(WL), "of the WL")
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
 print("Among them, there are : ", len(WL_minters), "minters")
-print("Conversion rate : ", 100*len(WL_minters)/len(name_holders), "%")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
 ##################################################################################################################################
+
+
+print("")
+
 
 # Conversion rate Dogami
 ##################################################################################################################################
@@ -84,12 +116,16 @@ for ad in NI_WL:
             WL_minters.append(ad)
 
 
-print(len(name_holders),name,"were whitelisted : ", len(name_holders)/len(WL), "of the WL")
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
 print("Among them, there are : ", len(WL_minters), "minters")
-print("Conversion rate : ", 100*len(WL_minters)/len(name_holders), "%")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
 ##################################################################################################################################
 
-# Conversion rate Dogami
+
+print("")
+
+
+# Conversion rate Tezotopia
 ##################################################################################################################################
 name_holders = []
 WL_minters = []
@@ -101,62 +137,259 @@ for ad in NI_WL:
             WL_minters.append(ad)
 
 
-print(len(name_holders),name,"were whitelisted : ", len(name_holders)/len(WL), "of the WL")
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
 print("Among them, there are : ", len(WL_minters), "minters")
-print("Conversion rate : ", 100*len(WL_minters)/len(name_holders), "%")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
 ##################################################################################################################################
-# PixelPotus 2.0
+
+
+print("")
+
+
+# Cyber Gecko Gang
 ##################################################################################################################################
-# dog_holders = []
-# dogxtz = []
-# for ad in NI_airdrop:
-#     dogami = "PixelPotus 2.0"
-#     if dogami in NI_airdrop[ad]:
-#         dog_holders.append(ad)
-#         if ad in doga:
-#             dogxtz.append(ad)
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Cyber Gecko Gang"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
 
 
-# print("DogaBone was airdropped to ", len(list_airdrop))
-# print("Among them, there are : ", len(dog_holders), "PixelPotus holders")
-# print("Among these ", len(dogxtz), "hold Dogami")
-# print("Conversion rate : ", 100*len(dogxtz)/len(dog_holders), "%")
-# ##################################################################################################################################
-
-
-# Parrotz
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
 ##################################################################################################################################
-# dog_holders = []
-# dogxtz = []
-# for ad in NI_cr7:
-#     dogami = "Parrotz"
-#     if dogami in NI_cr7[ad]:
-#         dog_holders.append(ad)
-#         if ad in holders:
-#             dogxtz.append(ad)
 
 
-# print("CR7 was airdropped to ", len(cr7))
-# print("Among them, there are : ", len(dog_holders), "Parrotz holders")
-# print("Among these ", len(dogxtz), "hold Parrotzs")
-# print("Conversion rate : ", 100*len(dogxtz)/len(dog_holders), "%")
-# ##################################################################################################################################
+print("")
 
 
-# Small wallets
+# Tezotopia Resources
 ##################################################################################################################################
-# dog_holders = []
-# dogxtz = []
-# for ad in NI_airdrop:
-#     if len(NI_airdrop[ad]) < 3:
-#         dog_holders.append(ad)
-#         if ad in doga:
-#             dogxtz.append(ad)
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Tezotopia Resources"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
 
 
-# print("CR7 was airdropped to ", len(list_airdrop))
-# print("Among them, there are : ", len(dog_holders),
-#       "wallets that hold 2 NFTs or less")
-# print("Among these ", len(dogxtz), "hold Dogami")
-# print("Conversion rate : ", 100*len(dogxtz)/len(dog_holders), "%")
-# ##################################################################################################################################
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# Diplomat NFTs
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Diplomat NFTs"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# Tezzles
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Tezzles"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# Randomly Common Skeles
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Randomly Common Skeles"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# Tezos Domains NameRegistry
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Tezos Domains NameRegistry"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# Tezos Degen Club
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Tezos Degen Club"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# Rocket Monsters
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Rocket Monsters"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# NEONZ
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "NEONZ"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# Mekatron K9
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "Mekatron K9"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# 8bidou 8x8
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "8bidou 8x8"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################
+
+
+print("")
+
+
+# QuipuSwap uUSD
+##################################################################################################################################
+name_holders = []
+WL_minters = []
+for ad in NI_WL:
+    name = "QuipuSwap uUSD"
+    if name in NI_WL[ad]:
+        name_holders.append(ad)
+        if ad in minters:
+            WL_minters.append(ad)
+
+
+print(len(name_holders),name,"were whitelisted : ", round(100*len(name_holders)/len(WL),2), "% of the WL")
+print("Among them, there are : ", len(WL_minters), "minters")
+print("Conversion rate : ", round(100*len(WL_minters)/len(name_holders),2), "%")
+##################################################################################################################################

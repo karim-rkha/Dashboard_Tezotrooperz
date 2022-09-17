@@ -10,6 +10,8 @@ from dateutil import parser
 with open("tz_holders", "rb") as fp:   # Unpickling
     holders = pickle.load(fp)
 
+with open("tz_minters", "rb") as fp:   # Unpickling
+    minters = pickle.load(fp)
 
 with open("WL_bis", "rb") as fp:   # Unpickling
     WL = pickle.load(fp)
@@ -19,8 +21,7 @@ def NI(who):  # Nfts held
     nft = {}
     inv = {}
     for him in who:
-        response = requests.get(
-            f"https://api.tzkt.io/v1/tokens/balances?token.standard=fa2&account={him}&balance.ne=0&limit={10000}").json()
+        response = requests.get(f"https://api.tzkt.io/v1/tokens/balances?token.standard=fa2&account={him}&balance.ne=0&limit={10000}").json()
         nft[him] = len(response)
         inv[him] = []
         for res in response:
@@ -32,21 +33,20 @@ def NI(who):  # Nfts held
 
     return [nft, inv]
 
-with open("NI_WL", "wb") as fp:  # Pickling
-    pickle.dump(NI(WL), fp)
+with open("NI_minters_new", "wb") as fp:  # Pickling
+    pickle.dump(NI(minters), fp)
 
 
 
-with open("NI_WL", "wb") as fp:  # Pickling
-    pickle.dump(NI(WL), fp)
+# with open("NI_WL", "wb") as fp:  # Pickling
+#     pickle.dump(NI(WL), fp)
 
 
 def NI(who):  # Nfts held
     i = 1
     inv = {}
     for him in who:
-        response = requests.get(
-            f"https://api.tzkt.io/v1/tokens/balances?token.standard=fa2&account={him}&firstTime.le=2022-04-05&limit={10000}").json()
+        response = requests.get(f"https://api.tzkt.io/v1/tokens/balances?token.standard=fa2&account={him}&firstTime.le=2022-04-05&limit={10000}").json()
         inv[him] = []
         for res in response:
             balance = int(res.get("balance"))
@@ -62,5 +62,5 @@ def NI(who):  # Nfts held
     return inv
 
 
-with open("NI_WL_5", "wb") as fp:  # Pickling
-    pickle.dump(NI(WL), fp)
+with open("NI_minters_5_new", "wb") as fp:  # Pickling
+    pickle.dump(NI(minters), fp)
