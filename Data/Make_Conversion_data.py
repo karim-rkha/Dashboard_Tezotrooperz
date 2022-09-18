@@ -59,19 +59,22 @@ df.loc[0]=['Overall',2400,'100%','11.21%',len(minters)]
 
 
 
-
+# print(col)
 i=0
 for x in d:
     name=col[i]
-    if res_WL[name]>=3:
-        df.loc[i+1] = [name,len(d[name]['WL']),str(res_WL[name])+"%",str(res_WL_Minters[name])+"%",len(d[name]['WL_Minters'])]
+    if res_WL[name]>=10:
+        if type(name) == str:
+            print(name)
+            print("")
+            df.loc[i+1] = [name,len(d[name]['WL']),str(res_WL[name])+"%",str(res_WL_Minters[name])+"%",len(d[name]['WL_Minters'])]
     i+=1
 
-print(list(df['Name']))
+# print(list(df['Name']))
 
 
-# with open("/Users/rkhachahamkarim/Documents/GitHub/Dashboard_Tezotrooperz/App/df", "wb") as fp:  # Pickling
-#     pickle.dump(df, fp)
+with open("/Users/rkhachahamkarim/Documents/GitHub/Dashboard_Tezotrooperz/App/df", "wb") as fp:  # Pickling
+    pickle.dump(df, fp)
 
 
 
