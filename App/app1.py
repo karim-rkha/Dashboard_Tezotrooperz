@@ -7,6 +7,7 @@ import pandas as pd
 import seaborn as sns
 import plotly.graph_objects as go
 from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 
@@ -51,20 +52,59 @@ def df_barplot(names):
 
 
 
+def select_f(dataset,select):
+    if select == "All":
+        return dataset
+    if select == "Score = 0":
+        dataset_bis=dataset.loc[dataset['Score'] == 0]
+        return dataset_bis
+    if select == "Score ≤ 10":
+        dataset_bis=dataset.loc[dataset['Score'] <= 10]
+        return dataset_bis
+    if select == "Score ≤ 25":
+        dataset_bis=dataset.loc[dataset['Score'] <= 25]
+        return dataset_bis
+    if select == "Score ≤ 50":
+        dataset_bis=dataset.loc[dataset['Score'] <= 50]
+        return dataset_bis
+
+    if select == "Score ≥ 50":
+        dataset_bis=dataset.loc[dataset['Score'] >= 50]
+        return dataset_bis
+    if select == "Score ≥ 75":
+        dataset_bis=dataset.loc[dataset['Score'] >= 75]
+        return dataset_bis
+    if select == "Score ≥ 90":
+        dataset_bis=dataset.loc[dataset['Score'] >= 90]
+        return dataset_bis
+
+
 with header:
     st.title("Datcom X Tezotrooperz")
-
-#     source_users = st.selectbox("Source of revenue : ", options=col, index=0, key='daily_users')
-
-
-# with conversion:
-#     h_col1, h_col2 = st.columns([2, 1])
-
-#     f_conversion(source_users)
 
 
 with conversion_data:
     h_col1, h_col2 = st.columns(2)
+
+    # fig, ax = plt.subplots(figsize=(width, height))
+    fig = go.Figure(data=[go.Table(
+    header=dict(values=list(df.columns),
+                fill_color='#CCE5E7',
+                align='left'),
+    cells=dict(values=[df['Name'], df['Number of WL spots'], df['Percentage of the WL'], df['Conversion rate'],df['Number of minters']],
+               fill_color='#F4F3F3',
+               align='left'))
+            ])
+    
+    fig.update_layout(
+    autosize=False,
+    width=700,
+    height=600)
+
+    h_col2.plotly_chart(fig)
+
+
+
 
     options = h_col1.multiselect(
     'Select NFT collection',
@@ -103,28 +143,58 @@ with conversion_data:
 
 
 
-    # fig, ax = plt.subplots(figsize=(width, height))
-    fig = go.Figure(data=[go.Table(
-    header=dict(values=list(df.columns),
-                fill_color='#CCE5E7',
-                align='left'),
-    cells=dict(values=[df['Name'], df['Number of WL spots'], df['Percentage of the WL'], df['Conversion rate'],df['Number of minters']],
-               fill_color='#F4F3F3',
-               align='left'))
-            ])
-    
-    fig.update_layout(
-    autosize=False,
-    width=700,
-    height=600)
-
-    h_col2.plotly_chart(fig)
-
-
 with score:
-    
+
     uploaded_file = st.file_uploader("Upload CSV", type=".csv")
 
     use_example_file = st.checkbox(
-        "Use example file", False, help="Use in-built example file to demo the app"
+        "Use example file", True, help="Score of sample dataset of Tezotrooperz WL wallets"
     )
+
+    if use_example_file:
+        select_df = st.selectbox("Select Score : ", options=["All","Score = 0","Score ≤ 10",
+                                                                   "Score ≤ 25", "Score ≤ 50", "Score ≥ 50", "Score ≥ 75", "Score ≥ 90"], index=0, key='select_df')
+
+        with open("example_df", "rb") as fp:   # Unpickling
+            example_df = pickle.load(fp)
+        
+        example_df=select_f(example_df,select_df)
+        
+        fig = go.Figure(data=[go.Table(
+        header=dict(values=list(example_df.columns),
+                    fill_color='#CCE5E7',
+                    align='left'),
+        cells=dict(values=[example_df['Wallet'], example_df['Score']],
+                fill_color='#F4F3F3',
+                align='left'))
+                ])
+        
+        fig.update_layout(
+        autosize=False,
+        # width=900,
+        height=700)
+
+        st.plotly_chart(fig,use_container_width = True)
+
+        def convert_df(data):
+            # IMPORTANT: Cache the conversion to prevent computation on every rerun
+            return data.to_csv().encode('utf-8')
+        
+
+        csv = convert_df(example_df)
+
+        st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name='Datcom_Example_File.csv',
+            mime='text/csv',
+        )
+
+        
+
+
+    else:
+        st.text("")
+        st.text("To get score your community, send a file to : karimrkha@gmail.com :)")
+    
+    
