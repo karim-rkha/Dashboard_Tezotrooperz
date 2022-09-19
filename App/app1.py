@@ -160,8 +160,13 @@ with score:
         select_df = st.selectbox("Select Score : ", options=["All","Score = 0","Score ≤ 10",
                                                                    "Score ≤ 25", "Score ≤ 50", "Score ≥ 50", "Score ≥ 75", "Score ≥ 90"], index=0, key='select_df')
 
-        with open("example_df", "rb") as fp:   # Unpickling
+        # with open("example_df", "rb") as fp:   # Unpickling
+        #     example_df = pickle.load(fp)
+        
+        with open("/app/dashboard_tezotrooperz/App/example_df", "rb") as fp:   # Unpickling
             example_df = pickle.load(fp)
+
+        # /app/dashboard_tezotrooperz/App/df
         
         example_df=select_f(example_df,select_df)
         
