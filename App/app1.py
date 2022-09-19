@@ -13,8 +13,13 @@ st.set_page_config(layout="wide")
 
 
 
-with open("df", "rb") as fp:   # Unpickling
+# with open("df", "rb") as fp:   # Unpickling
+#     df = pickle.load(fp)
+
+with open("/app/dashboard_tezotrooperz/App/df", "rb") as fp:   # Unpickling
     df = pickle.load(fp)
+
+
 
 header = st.container()
 conversion_data = st.container()
