@@ -91,9 +91,9 @@ with header:
 with conversion_data:
     h_col1, h_col2 = st.columns(2)
 
-    color = h_col2.select_slider(
-    'Threshold',
-    options=['0', '10', '20', '30', '40', '50', '60', '70', '80'])
+    # color = h_col2.select_slider(
+    # 'Threshold',
+    # options=['0', '10', '20', '30', '40', '50', '60', '70', '80'])
 
     # fig, ax = plt.subplots(figsize=(width, height))
     fig = go.Figure(data=[go.Table(
