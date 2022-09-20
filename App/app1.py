@@ -89,7 +89,6 @@ def threshold_f(t):
     df_bis= pd.DataFrame(columns=['Name','Number of WL spots','Percentage of the WL','Conversion rate','Number of minters'])
     # i=0
     df.reset_index(drop=True, inplace=True)
-    st.text(float(df.loc[i]['Percentage of the WL'][:-1]))
     for i in range(df.shape[0]):
         if float(df.loc[i]['Percentage of the WL'][:-1]) >= t_int:
             df_bis.loc[i] = df.loc[i]
@@ -117,10 +116,10 @@ with conversion_data:
     df_thr=threshold_f(thr)
 
     fig = go.Figure(data=[go.Table(
-    header=dict(values=list(df.columns),
+    header=dict(values=list(df_thr.columns),
                 fill_color='#CCE5E7',
                 align='left'),
-    cells=dict(values=[df['Name'], df['Number of WL spots'], df['Percentage of the WL'], df['Conversion rate'],df['Number of minters']],
+    cells=dict(values=[df_thr['Name'], df_thr['Number of WL spots'], df_thr['Percentage of the WL'], df_thr['Conversion rate'],df_thr['Number of minters']],
                fill_color='#F4F3F3',
                align='left'))
             ])
