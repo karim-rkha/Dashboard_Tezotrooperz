@@ -89,6 +89,7 @@ def threshold_f(t):
     df_bis= pd.DataFrame(columns=['Name','Number of WL spots','Percentage of the WL','Conversion rate','Number of minters'])
     # i=0
     df.reset_index(drop=True, inplace=True)
+    st.text(float(df.loc[i]['Percentage of the WL'][:-1]))
     for i in range(df.shape[0]):
         if float(df.loc[i]['Percentage of the WL'][:-1]) >= t_int:
             df_bis.loc[i] = df.loc[i]
