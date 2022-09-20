@@ -84,6 +84,18 @@ def select_f(dataset,select):
         return dataset_bis
 
 
+def threshold_f(t):
+    t_int=int(t)
+    df_bis= pd.DataFrame(columns=['Name','Number of WL spots','Percentage of the WL','Conversion rate','Number of minters'])
+    # i=0
+    df.reset_index(drop=True, inplace=True)
+    for i in range(df.shape[0]):
+        if float(df.loc[i]['Percentage of the WL'][:-1]) >= t_int:
+            df_bis.loc[i] = df.loc[i]
+        i+=1
+    return df_bis
+
+
 with header:
     st.title("Datcom X Tezotrooperz")
 
@@ -96,6 +108,13 @@ with conversion_data:
     # options=['0', '10', '20', '30', '40', '50', '60', '70', '80'])
 
     # fig, ax = plt.subplots(figsize=(width, height))
+
+    thr = h_col2.select_slider(
+    'Threshold',
+    options=['0','1','5','10', '20', '30', '40', '50', '60', '70', '80'], value='10')
+
+    df_thr=threshold_f(thr)
+
     fig = go.Figure(data=[go.Table(
     header=dict(values=list(df.columns),
                 fill_color='#CCE5E7',
@@ -106,9 +125,9 @@ with conversion_data:
             ])
     
     fig.update_layout(
-    autosize=False,
-    width=700,
-    height=600)
+    autosize=True)
+    # width=700,
+    # height=600)
 
     h_col2.plotly_chart(fig)
 
